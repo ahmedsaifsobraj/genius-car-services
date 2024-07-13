@@ -12,6 +12,8 @@ import ServiceDetails from './Pages/Home/ServiceDetails/ServiceDetails';
 import Error from './Pages/Error/Error';
 import Login from './Pages/Login/Login';
 import Register from './Pages/Register/Register';
+import RequireAuth from './Pages/Login/RequireAuth/RequireAuth';
+import CheckOut from './Pages/CheckOut/CheckOut';
 
 const router = createBrowserRouter([
   {
@@ -38,6 +40,12 @@ const router = createBrowserRouter([
       {
         path:'/login',
         element:<Login></Login>,
+      },
+      {
+        path: '/checkout',
+        element:<RequireAuth>
+          <CheckOut></CheckOut>
+        </RequireAuth>,
       }
     ]
   },

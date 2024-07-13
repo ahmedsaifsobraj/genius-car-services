@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Service from '../Service/Service';
 import './Services.css';
+import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 const Services = (props) => {
     const [services,setServices]=useState([]);
@@ -16,6 +18,9 @@ const Services = (props) => {
             {
                 services.map(service=><Service key={service.id} service={service}></Service>)
             }
+            </div>
+            <div>
+                <Link to='/checkout'><Button className='btn btn-primary'>Proceed CheckOut</Button></Link>
             </div>
 
         </div>
