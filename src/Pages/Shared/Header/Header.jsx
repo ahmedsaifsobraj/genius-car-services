@@ -5,13 +5,14 @@ import { Link } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { signOut } from 'firebase/auth';
 import auth from '../../../firebase.init';
+import Loader from '../Loader/Loader';
 const Header = (props) => {
     const [user]=useAuthState(auth);
     const handleSignOut =()=>{
         signOut(auth);
     }
     return (
-        <Navbar collapseOnSelect expand="lg" sticky='top' className="bg-body-tertiary bg-dark">
+        <Navbar collapseOnSelect expand="lg" sticky='top' bg="dark" data-bs-theme="dark">
             <Container>
                 <Navbar.Brand as={Link} to="/"><img height={30} src={logo} alt="" /></Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />

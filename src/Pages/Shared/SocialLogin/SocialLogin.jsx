@@ -2,22 +2,22 @@ import React from 'react';
 import google from '../../../Images/social/google.png';
 import fb from '../../../Images/social/fb.png';
 import github from '../../../Images/social/github.png';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { useNavigate } from 'react-router-dom';
 
 const SocialLogin = (props) => {
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+    const [signInWithGithub, user1, loading1, error1] = useSignInWithGithub(auth);
     const navigate = useNavigate();
     let errorElement;
-    if (error) {
-
-        errorElement = <div>
-            <p>Error: {error.message}</p>
+    if (error || error1) {
+        errorElement = 
+        <div>
+            <p>Error: {error?.message} {error1?.message}</p>
         </div>
-            ;
     }
-    if(user){
+    if (user || user1) {
         navigate('/home');
     }
     return (
@@ -29,13 +29,13 @@ const SocialLogin = (props) => {
             </div>
             {errorElement}
             <div className='my-2'>
-                <button onClick={()=>signInWithGoogle()} className='btn btn-dark w-25 d-block mx-auto'><img style={{ height: '30px' }} src={google}></img><span className='px-2'>Continue with Google</span></button>
+                <button onClick={() => signInWithGoogle()} className='btn btn-dark w-50 d-block mx-auto'><img style={{ height: '30px' }} src={google}></img><span className='px-2'>Continue with Google</span></button>
             </div>
             <div className='my-2'>
-                <button className='btn btn-dark w-25 d-block mx-auto'><img style={{ height: '30px' }} src={fb}></img><span className='px-2'>Continue with Facebook</span></button>
+                <button className='btn btn-dark w-50 d-block mx-auto'><img style={{ height: '30px' }} src={fb}></img><span className='px-2'>Continue with Facebook</span></button>
             </div>
             <div className='my-2'>
-                <button className='btn btn-dark w-25 d-block mx-auto'><img style={{ height: '30px' }} src={github}></img><span className='px-2'>Continue with GitHub</span></button>
+                <button onClick={() => signInWithGithub()} className='btn btn-dark w-50 d-block mx-auto'><img style={{ height: '30px' }} src={github}></img><span className='px-2'>Continue with GitHub</span></button>
             </div>
         </div>
     );
