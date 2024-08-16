@@ -14,36 +14,37 @@ import Login from './Pages/Login/Login';
 import Register from './Pages/Register/Register';
 import RequireAuth from './Pages/Login/RequireAuth/RequireAuth';
 import CheckOut from './Pages/CheckOut/CheckOut';
+import { HelmetProvider } from 'react-helmet-async';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
-    errorElement: <Error/>,
-    children:[
+    errorElement: <Error />,
+    children: [
       {
-        path:"/home",
-        element:<Home></Home>,
+        path: "/home",
+        element: <Home></Home>,
       },
       {
-        path:"/about",
-        element:<About></About>
+        path: "/about",
+        element: <About></About>
       },
       {
-        path:'/services/:servicesId',
-        element:<ServiceDetails></ServiceDetails>,
+        path: '/services/:servicesId',
+        element: <ServiceDetails></ServiceDetails>,
       },
       {
-        path:'/register',
-        element:<Register></Register>
+        path: '/register',
+        element: <Register></Register>
       },
       {
-        path:'/login',
-        element:<Login></Login>,
+        path: '/login',
+        element: <Login></Login>,
       },
       {
         path: '/checkout',
-        element:<RequireAuth>
+        element: <RequireAuth>
           <CheckOut></CheckOut>
         </RequireAuth>,
       }
@@ -52,7 +53,9 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>,
+  <HelmetProvider>
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>,
+  </HelmetProvider>
 )

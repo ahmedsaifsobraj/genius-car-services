@@ -33,7 +33,7 @@ const Header = (props) => {
                         </NavDropdown>
                     </Nav>
                     <Nav>
-                        <Nav.Link as={Link} href="about">About</Nav.Link>
+                        <Nav.Link as={Link} to='/about'>About</Nav.Link>
                         {
                             user ? <Button className='btn btn-link text-black text-decoration-none' onClick={handleSignOut}>SignOut</Button>:<Nav.Link eventKey={2} as={Link} to="login">
                             Login

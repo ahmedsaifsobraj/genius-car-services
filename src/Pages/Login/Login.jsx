@@ -9,6 +9,7 @@ import auth from '../../firebase.init';
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 import Loader from '../Shared/Loader/Loader';
 import toast, { Toaster } from 'react-hot-toast';
+import PageTitle from '../Shared/PageTitle/PageTitle';
 
 
 const Login = (props) => {
@@ -57,6 +58,7 @@ const Login = (props) => {
 
     return (
         <div className='m-5 border border-2 rounded p-5'>
+            <PageTitle title='Login'></PageTitle>
             <Toaster position="top-center"
                 reverseOrder={false} />
             <h1 className='text-center '>Login</h1>
